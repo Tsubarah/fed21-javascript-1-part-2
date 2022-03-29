@@ -23,30 +23,16 @@
 			</form>
 		</div>
 
-		<div id="forecast" class="card">
-			<img src="assets/images/forecast-banner.png" class="card-img-top">
-			<div class="card-body">
-				<h5 class="card-title" id="location">
-					<span id="city">City</span>,
-					<span id="country">Country</span>
-				</h5>
-				<p class="temp">
-					<span id="temperature">300</span>
-					&deg;K
-				</p>
-				<p class="humidity">
-					<span id="humidity">100</span>
-					&percnt; humidity
-				</p>
-				<p class="wind">
-					<span id="windspeed">1337</span>
-					mm/s
-				</p>
-			</div>
+		<div id="spinner" class="hide">
+			<span class="h1">😴</span>
 		</div>
+
+		<div id="forecast"></div>
 
 	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" referrerpolicy="no-referrer"></script>
+	<script src="assets/js/owmapi.js"></script>
 	<script src="assets/js/app.js"></script>
 </body>
 </html>
