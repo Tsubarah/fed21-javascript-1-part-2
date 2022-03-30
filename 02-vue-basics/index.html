@@ -22,6 +22,29 @@
 
 		<hr />
 
+		<div class="mb-3">
+			<input
+				type="text"
+				class="form-control"
+				placeholder="Enter your name"
+				v-model="username"
+			/>
+		</div>
+
+		<p>Hello, {{ username }}!</p>
+
+		<hr />
+
+		<h2>Todos</h2>
+
+		<ul>
+			<li
+			 v-for="todo in todos" class="todo.completed ? 'completed' : ''">{{ todo.title }}
+			</li>
+		</ul>
+
+		<hr />
+
 		<p>Salary per hour: <span :class="salaryClass">{{ salary }} &euro;</span></p>
 
 		<img :src="getSalaryImg()" class="img-fluid" alt="">
