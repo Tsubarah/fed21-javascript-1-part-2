@@ -10,26 +10,28 @@ const Timer = () => {
         setElapsedTime(prevTimeElapsed => prevTimeElapsed + 1)
     }, 1000);
 
-    setElapsedTime(intervalId)
+    setTimerId(intervalId)
   }
 
   const stopTimer = () => {
-
+    clearInterval(timerId)
   }
 
   const resetTimer = () => {
-
+    setElapsedTime(0)
   }
 
   return ( 
-    <>
-    <div id="time-elapsed" className="mt-3">{elapsedTime}</div>
+    <div className="display-1 text-center">
+      <div className="time-elapsed">
+        <pre>{elapsedTime}</pre>
+    </div>
     <div id="buttons-container" className="text-center mt-3">
       <button onClick={startTimer} className="btn btn-success">Start</button>
       <button onClick={stopTimer} className="btn btn-outline-light">Stop</button>
       <button onClick={resetTimer} className ="btn btn-danger">Reset</button>
     </div>
-    </>
+    </div>
    );
 }
  
