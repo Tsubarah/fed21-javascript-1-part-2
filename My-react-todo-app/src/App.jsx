@@ -2,43 +2,49 @@ import { useEffect, useState } from 'react'
 import AddNewTodoForm from './components/AddNewTodoForm'
 import AlertInfo from './components/AlertInfo'
 import TodoList from './components/TodoList'
-import TodoListItem from './components/TodoListItem'
+import TodosAPI from './services/TodosAPI'
 import './App.css'
 
 const App = () => {
-	const [todos, setTodos] = useState([
-		{ title: "Make coffee", completed: true },
-		{ title: "Drink coffee", completed: false },
-		{ title: "Drink MOAR coffee", completed: false },
-		{ title: "Drink ALL THE coffee", completed: false },
-	])
+	const [todos, setTodos] = useState([])
 	const [unfinishedTodos, setUnfinishedTodos] = useState([])
 	const [finishedTodos, setFinishedTodos] = useState([])
 
-	const toggleTodo = (todo) => {
-		todo.completed = !todo.completed
-		setTodos([...todos])
+	// Get todos from api
+	const getTodos = async () => {
+		const data = await TodosAPI.getTodos()
+		setTodos(data)
 	}
 
-	const deleteTodo = (clickedTodo) => {
-		setTodos(todos.filter(todo => todo !== clickedTodo))
+	// Create a new todo in the api
+	const createTodo = async (newTodo) => {
+		await TodosAPI.createTodo(newTodo)
+		getTodos()
 	}
 
-	const handleAddNewTodo = (newTodo) => {
-		setTodos([...todos, newTodo])
+	// Delete a todo in the api
+	const deleteTodo = async (todo) => {
+		await TodosAPI.deleteTodo(todo.id)
+		getTodos()
 	}
 
-	// This will only be executed when the component is mounted,
-	// and only AFTER the component has been rendered
+	// Toggle the completed status of a todo in the api
+	const toggleTodo = async (todo) => {
+		await TodosAPI.updateTodo(todo.id, {
+			completed: !todo.completed
+		})
+		getTodos()
+	}
+
+	// Get todos from api when component is first mounted
 	useEffect(() => {
-		console.log("I'm a newly mounted component 👶🏽")
+		getTodos()
 	}, [])
 
 	// This will only be executed if `todos` have changed since last render,
 	// and only AFTER the component has been rendered
 	useEffect(() => {
 		// Derive unfinishedTodos and finishedTodos from todos state
-		console.log("Filtering todos...")
 		setUnfinishedTodos(todos.filter(todo => !todo.completed))
 		setFinishedTodos(todos.filter(todo => todo.completed))
 	}, [todos])
@@ -46,7 +52,6 @@ const App = () => {
 	// This will only be executed if `finishedTodos` OR `todos` have changed since last render,
 	// and only AFTER the component has been rendered
 	useEffect(() => {
-		console.log("Updating page title...")
 		document.title = `${finishedTodos.length}/${todos.length} completed`
 	}, [finishedTodos, todos])
 
@@ -56,7 +61,7 @@ const App = () => {
 
 			<div className="mb-3">
 				<AddNewTodoForm
-					onAddNewTodo={handleAddNewTodo}
+					onAddNewTodo={createTodo}
 				/>
 			</div>
 
