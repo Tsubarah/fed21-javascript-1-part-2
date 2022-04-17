@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-const SearchCity = ({ onNewCity }) => {
+const SearchCity = ({ handleSearch }) => {
 
-	const [newCityTitle, setNewCityTitle] = useState('')
+	const [city, setCity] = useState('')
 
 	const handleSubmit = e => {
 		e.preventDefault()
 
-		const newCity = newCityTitle
-		onNewCity(newCity)
+		handleSearch(city)
 
-		setNewCityTitle('')
+		setCity('')
 	}
 	
 	return (
@@ -21,8 +20,8 @@ const SearchCity = ({ onNewCity }) => {
 						type="text"
 						className="form-control"
 						placeholder="Enter city to search for" aria-label="City" aria-details="Search for city to show current weather for."
-						onChange={e => setNewCityTitle(e.target.value)}
-						value={newCityTitle}
+						onChange={e => setCity(e.target.value)}
+						value={city}
 					/>
 					<button type="submit" className="btn btn-success">🔍</button>
 				</div>

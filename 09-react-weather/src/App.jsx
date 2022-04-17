@@ -4,25 +4,37 @@ import SearchCity from './components/SearchCity'
 import { getCurrentWeather } from './services/owmapi'
 import './App.css'
 
-const App = ({ handleSubmit }) => {
+const App = () => {
 
+	const [location, setLocation] = useState()
+	const [currentWeather, setCurrentWeather] = useState()
 
-	const [city, setCity] = useState('')
-
-	const handleCity = (acity) => {
-		setCity(acity)
+	const handleSearch = (city) => {
+		setLocation(city)
 	}
 
 	useEffect(() => {
-		console.log(getCurrentWeather(city))
-	}, [city])	
+		if (!location) {
+			return
+		}
+		
+		const fetchData = async () => {
+			const data = await getCurrentWeather(location)
+			console.log(data)
+
+			setCurrentWeather(data)
+
+		}
+		fetchData()
+
+	}, [location])	
 
 
 	return (
 		<div id="app" className="container">
-			<SearchCity onNewCity={handleCity}/>
+			<SearchCity handleSearch={handleSearch}/>
 
-			<Forecast />
+			{currentWeather && <Forecast data={currentWeather}/>}
 		</div>
 	)
 }
