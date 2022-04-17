@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 const SearchCity = ({ handleSearch }) => {
 
-	const [city, setCity] = useState('')
+	const [city, setCity] = useState()
 
-	const handleSubmit = e => {
+	const handleSubmit = (e) => {
 		e.preventDefault()
 
 		handleSearch(city)

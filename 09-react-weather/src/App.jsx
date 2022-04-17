@@ -6,7 +6,7 @@ import './App.css'
 
 const App = () => {
 
-	const [location, setLocation] = useState()
+	const [location, setLocation] = useState('')
 	const [currentWeather, setCurrentWeather] = useState()
 
 	const handleSearch = (city) => {
@@ -17,17 +17,14 @@ const App = () => {
 		if (!location) {
 			return
 		}
-		
+
 		const fetchData = async () => {
 			const data = await getCurrentWeather(location)
-			console.log(data)
-
 			setCurrentWeather(data)
-
+			console.log(data)
 		}
 		fetchData()
-
-	}, [location])	
+	}, [location])
 
 
 	return (
