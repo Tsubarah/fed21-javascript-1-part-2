@@ -18,17 +18,32 @@
     {
       "title": "asd",
       "completed": false,
-      "id": 4
-    },
-    {
-      "title": "asd",
-      "completed": false,
       "id": 5
     },
     {
       "title": "asd",
       "completed": false,
       "id": 6
+    },
+    {
+      "title": "Vanlig todo",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "title": "Detta är en ny",
+      "completed": false,
+      "id": 8
+    },
+    {
+      "title": "blabla",
+      "completed": false,
+      "id": 9
+    },
+    {
+      "title": "okok",
+      "completed": false,
+      "id": 10
     }
   ]
 }

@@ -12,19 +12,10 @@ const TodosPage = () => {
 		setTodos(data)
 	}
 
-
 	/*
 	// Delete a todo in the api
 	const deleteTodo = async (todo) => {
 		await TodosAPI.deleteTodo(todo.id)
-		getTodos()
-	}
-
-	// Toggle the completed status of a todo in the api
-	const toggleTodo = async (todo) => {
-		await TodosAPI.updateTodo(todo.id, {
-			completed: !todo.completed
-		})
 		getTodos()
 	}
 	*/

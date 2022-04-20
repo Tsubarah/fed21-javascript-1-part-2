@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const AddNewTodoForm = ({ onAddNewTodo }) => {
 	// input state
 	const [newTodoTitle, setNewTodoTitle] = useState('')
 	// input reference
 	const newTodoTitleRef = useRef()
-	const navigate = useNavigate()
 
 	const handleSubmit = e => {
 		// stop form from submitting
@@ -18,8 +16,6 @@ const AddNewTodoForm = ({ onAddNewTodo }) => {
 
 		// clear newTodoTitle state
 		setNewTodoTitle('')
-
-		navigate('/todos')
 	}
 
 	// focus on input field when component is mounted
