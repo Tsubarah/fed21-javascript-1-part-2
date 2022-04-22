@@ -38,8 +38,8 @@ const SearchHackerNews = () => {
 		// set input value as query in URLSearchParams
 		setSearchParams({ query: searchInput })
 
-		// search HN
-		searchHackerNews(searchInput, 0)
+		// // search HN <-- Not needed as useEffect is keeping track for changes from Query
+		// searchHackerNews(searchInput, 0)
 	}
 
 	useEffect(() => {
