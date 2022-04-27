@@ -9,15 +9,18 @@ const useFetch = (initialUrl = null) => {
 
   
   useEffect(() => {
+    setLoading(true)
 
     if (!url) {
       return
     }
 
+
     const fetchData = async () => {
       const res = await axios.get(url)
       setData(res.data)
     }
+    setLoading(false)
 
     fetchData()
 

@@ -9,7 +9,8 @@ export default function FetchPage() {
 
       {data && (<p className="display-3">{data.value}</p>)}
 
-      <Button variant="success">More Jokes</Button>
+      <Button 
+      variant="success">More Jokes</Button>
 
     </>
   )
