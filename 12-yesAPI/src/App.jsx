@@ -6,19 +6,22 @@ import { ThemeContext } from './contexts/ThemeContextProvider'
 import HomePage from './pages/HomePage'
 import SearchHackerNews from './pages/SearchHackerNews'
 import NotFound from './pages/NotFound'
+import FetchPage from './pages/FetchPage'
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 
 const App = () => {
-	const { isDarkTheme } = useContext(ThemeContext)
+	const { getStyle } = useContext(ThemeContext)
+
 
 	return (
-		<div id="App" className={isDarkTheme() ? 'bg-dark text-success' : ''}>
+		<div id="App" className={getStyle()}>
 			<Navigation />
 
 			<Container className="py-3">
 				<Routes>
 					<Route path="/" element={<HomePage />} />
+					<Route path="fetch" element={<FetchPage />} />
 					<Route path="/search" element={<SearchHackerNews />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
